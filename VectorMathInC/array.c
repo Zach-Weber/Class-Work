@@ -49,9 +49,11 @@ void add_arrays(const int a[], const int b[], int c[], int size)
 */
 void scalar_multiply(int a[], int size, int multiplier)
 {
-	if(a && size && multiplier)
-		return;
-	return;
+	int i;
+	for (i = 0; i < size; i++)
+	{
+		a[i] *= multiplier;
+	}
 }
 
 /*
@@ -60,9 +62,13 @@ void scalar_multiply(int a[], int size, int multiplier)
 */
 int dot_product(const int a[], const int b[], int size)
 {
-	if(a || b)
-		return size;
-	return size;
+	int i;
+	int total = 0;
+	for (i = 0; i < size; i++)
+	{
+		total += a[i] * b[i];
+	}
+	return total;
 }
 
 /*
@@ -71,7 +77,7 @@ int dot_product(const int a[], const int b[], int size)
 */
 void cross_product(const int a[], const int b[], int c[])
 {
-	if(a || b || c)
-		return;
-	return;
+	c[0] = (a[1] * b[2]) - (b[1] * a[2]);
+	c[1] = -1 * ((a[0] * b[2]) - (b[0] * a[2]));
+	c[2] = (a[0] * b[1]) - (b[0] * a[1]);
 }
