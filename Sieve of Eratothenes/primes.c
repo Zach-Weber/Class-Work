@@ -16,7 +16,7 @@ Find a set amount of primes using Sieve of Eratothenes.
 		 array[1] = 0;
 		 
 		 int i;
-		 for (i = 0; i < 0; i++)
+		 for (i = 2; i < size; i++)
 		 {
 			 
 		 }
