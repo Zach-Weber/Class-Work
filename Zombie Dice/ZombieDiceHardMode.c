@@ -47,6 +47,9 @@ int main(void)
 	/*game loop, will break when and condition is met*/
 	while(1)
 	{
+		
+		PlayerTurn();
+		
 		/*end condition*/
 		if(playerScores[currentPlayer] >= 13)
 		{
@@ -56,9 +59,7 @@ int main(void)
 		
 		WaitForEnter();
 		
-		
-		
-		
+		++currentPlayer;
 	}
 	/*TODO: figure out who won here in a loop also print scores*/
 	
@@ -80,7 +81,7 @@ int PlayerTurn()
 	/*turn set up*/
 	/* dice cup/bag */
 	int dicePool[3] = {0};
-	/* if you geta  shot, record each color as you do */
+	/* if you get a shot, record each color as you do */
 	int shotArray[3] = {-1, -1, -1};
 	/* these are the 3 currently in your hand */
 	int current3Dice[3] = {-1, -1, -1};
@@ -94,9 +95,6 @@ int PlayerTurn()
 	diceRemaining = RefreshDice(dicePool, shotArray);
 	
 	
-		
-		
-		
 	
 	return brains;
 	
