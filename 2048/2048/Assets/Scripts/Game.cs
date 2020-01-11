@@ -25,7 +25,7 @@ public class Game : MonoBehaviour
     {
         CheckUserInput();
 
-        debug.Add("Current Time", Time.time.ToString() , "currenttime");
+        //debug.Add("Current Time", Time.time.ToString() , "currenttime");
     }
 
 
@@ -36,9 +36,9 @@ public class Game : MonoBehaviour
     {
         // sets bool values if a key is currently presses on the frame this function is called
         bool down = Input.GetKeyDown(KeyCode.DownArrow),
-            up = Input.GetKeyDown(KeyCode.UpArrow),
-            left = Input.GetKeyDown(KeyCode.LeftArrow),
-            right = Input.GetKeyDown(KeyCode.RightArrow);
+             up = Input.GetKeyDown(KeyCode.UpArrow),
+             left = Input.GetKeyDown(KeyCode.LeftArrow),
+             right = Input.GetKeyDown(KeyCode.RightArrow);
 
         if(down || up || left || right)
         {
@@ -67,17 +67,22 @@ public class Game : MonoBehaviour
     /// <summary>
     /// Creates a how ever many new tile game object in the game
     /// </summary>
-    /// <param name="number"></param>
-    void GenerateNewTile(int number)
+    /// <param name="howMany"></param>
+    void GenerateNewTile(int howMany)
     {
         // loops through how ever many tiles that are being called
-        for (int i = 0; i < number; ++i)
+        for (int i = 0; i < howMany; ++i)
         {
             // getting a random location and storing it
             Vector2 newLocation = GetRandomLocation();
 
             // storing the name of the prefab tile
-            string tile = "2";
+            string tile = "tile_2";
+
+            float chanceOfTwo = Random.Range(0f, 1f);
+
+            if (chanceOfTwo > 0.9f)
+                tile = "tile_4";
 
             // creating a newTile game object that is using the string tile and the new location data from above
             GameObject newTile = (GameObject)Instantiate(Resources.Load(tile, typeof(GameObject)), newLocation, Quaternion.identity);
