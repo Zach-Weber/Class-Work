@@ -46,6 +46,7 @@ public class Game : MonoBehaviour
             {
                 debug.Add("Player Pressed Key", "Down", "CheckUserInput");
 
+                GenerateNewTile(1);
                 GetRandomLocation();
             }
             if (up)
@@ -81,7 +82,7 @@ public class Game : MonoBehaviour
 
             float chanceOfTwo = Random.Range(0f, 1f);
 
-            if (chanceOfTwo > 0.9f)
+            if (chanceOfTwo > 0.8f)
                 tile = "tile_4";
 
             // creating a newTile game object that is using the string tile and the new location data from above
@@ -90,8 +91,38 @@ public class Game : MonoBehaviour
             // makes the new tile that was just created be parented to the grid game object
             newTile.transform.parent = transform;
         }
+
+        UpdateGrid();
     }
 
+    /// <summary>
+    /// Updates the grid to have the tiles locations stored on the array
+    /// </summary>
+    void UpdateGrid()
+    {
+        //Scans every element in the array and clears it
+        for(int y = 0; y< gridHeight; ++y)
+        {
+            for(int x = 0; x< gridWidth; ++x)
+            {
+                if(grid[x,y] != null)
+                {
+                    if(grid[x,y].parent == transform)
+                    {
+                        grid[x, y] = null;
+                    }
+                } 
+            }
+        }
+
+        // Puts the transform info of each tile that is on screen to its relative point on the arrayd
+        foreach (Transform tile in transform)
+        {
+            Vector2 v = new Vector2(Mathf.Round(tile.position.x), Mathf.Round(tile.position.y));
+
+            grid[(int)v.x, (int)v.y] = tile;
+        }
+    }
 
     /// <summary>
     /// Searches the grid for a random location that is free of tiles and returns a vector 2 of that free location
