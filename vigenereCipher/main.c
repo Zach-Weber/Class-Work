@@ -15,10 +15,10 @@ int main(void)
 	int passes;
 	
 	/*ask for the string to encrypt and store it in string*/
-	
+	fgets(string, 256, stdin);
 	
 	/*ask for the key to encrypt with and store it in key*/
-	
+	fgets(key, 32, stdin);
 	
 	/*ask for how many passes to encrypt with*/
 	
