@@ -7,4 +7,4 @@ Brief: the header file to use with vigenereCipher.c
 
 enum CODE_METHOD {ENCODE, DECODE};
 
-void vigenere(unsigned char *string, unsigned char *key, enum CODE_METHOD method, int passes);
+void vigenere(char *string, char *key, enum CODE_METHOD method, int passes);
