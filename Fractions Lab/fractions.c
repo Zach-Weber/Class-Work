@@ -2,7 +2,7 @@
 
 
 
-
+gcc -Wall -Wextra -ansi -pedantic -O -o fractions main.c fractions.c
 *****/
 
 #include "fractions.h" /* FRACTION stuff */
@@ -40,6 +40,7 @@ struct FRACTION add_fractions(const struct FRACTION *a, const struct FRACTION *b
 	/* multiply numerators with opposite denominators */
 	newA.numerator *= newB.denominator;
 	newB.numerator *= newA.denominator;
+	
 	/* add two numerators and put everything in the c fraction */
 	c.numerator = newA.numerator + newB.numerator;
 	c.denominator = denominator;
